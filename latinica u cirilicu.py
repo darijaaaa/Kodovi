@@ -1,7 +1,7 @@
 konv = {"r":"р","t":"т","u":"у","i":"и","p":"п","s":"с","z":"з",
         "d":"д","f":"ф","g":"г","h":"х","k":"к","nj":"њ",
         "l":"л","c":"ц","v":"в","b":"б","n":"н","m":"м",
-        "č":"ч","ć":"ћ","š":"ш","đ":"ђ","ž":"ж","lj":"љ", "dj":"ђ"}
+        "č":"ч","ć":"ћ","š":"ш","đ":"ђ","ž":"ж","lj":"љ", "dj":"ђ", "dž":"џ"}
 krit = "lnd"
 f = open("latinica.txt", "r", encoding = "utf8")
 g = open("cirilica.txt", "w", encoding = "utf8")
@@ -16,6 +16,9 @@ while i < len(ff):
             p = konv[ff[i].lower()]
         else:
             if ff[i + 1].lower() == "j":
+                p = konv[ff[i].lower() + ff[i + 1].lower()]
+                i += 1
+            elif ff[i + 1].lower() == "ž":
                 p = konv[ff[i].lower() + ff[i + 1].lower()]
                 i += 1
             else:
